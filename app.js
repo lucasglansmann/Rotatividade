@@ -249,70 +249,8 @@ function gerarFluxograma() {
   `;
 }
 
-function aguardarImagens(container) {
-  const imagens = [...container.querySelectorAll("img")];
-
-  return Promise.all(
-    imagens.map((img) => {
-      if (img.complete) {
-        return Promise.resolve();
-      }
-
-      return new Promise((resolve) => {
-        img.onload = resolve;
-        img.onerror = resolve;
-      });
-    })
-  );
-}
-
-async function exportarPDF() {
-  const escala = document.getElementById("escalaContainer");
-  const tarefas = document.getElementById("tarefasContainer");
-  const fluxograma = document.getElementById("fluxogramaContainer");
-  const exportArea = document.createElement("div");
-
-  exportArea.className = "pdf-export";
-  exportArea.innerHTML = `
-    <header class="pdf-cabecalho">
-      <img src="mbb.jpg" alt="Mercedes-Benz">
-      <div>
-        <h1>Painel Inteligente de Rotatividade</h1>
-        <p>${escaparHTML(document.getElementById("semanaAtual").textContent)}</p>
-      </div>
-    </header>
-    <section class="resultado-grid">
-      <div>${escala.innerHTML}</div>
-      <div>${tarefas.innerHTML}</div>
-    </section>
-    <section>${fluxograma.innerHTML}</section>
-  `;
-
-  document.body.appendChild(exportArea);
-
-  await aguardarImagens(exportArea);
-
-  try {
-    await html2pdf()
-      .set({
-      margin: 0.15,
-      filename: "rotatividade.pdf",
-      pagebreak: { mode: ["avoid-all"] },
-      html2canvas: {
-        scale: 2,
-        useCORS: true
-      },
-      jsPDF: {
-        unit: "in",
-        format: "a4",
-        orientation: "landscape"
-      }
-    })
-      .from(exportArea)
-      .save();
-  } finally {
-    exportArea.remove();
-  }
+function exportarPDF() {
+  window.print();
 }
 
 function atualizarSemana() {
