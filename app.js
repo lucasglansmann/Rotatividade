@@ -77,12 +77,17 @@ function criarEscala(nomes) {
 }
 
 function criarTarefas5S(nomes) {
-  const nomesSorteados = embaralhar(nomes);
+  return dias.map((dia) => {
+    const nomesSorteados = embaralhar(nomes);
 
-  return tarefas5S.map((tarefa, index) => ({
-    tarefa,
-    nome: nomesSorteados[index % nomesSorteados.length] || ""
-  }));
+    return {
+      dia,
+      tarefas: tarefas5S.map((tarefa, index) => ({
+        tarefa,
+        nome: nomesSorteados[index % nomesSorteados.length] || ""
+      }))
+    };
+  });
 }
 
 function obterChaveSemana(data = new Date()) {
@@ -120,18 +125,35 @@ function carregarDadosDaSemana() {
 
     return {
       escala,
-      tarefas: Array.isArray(tarefas) ? tarefas : criarTarefas5S(escala.map(({ nome }) => nome))
+      tarefas:
+        Array.isArray(tarefas) && tarefas[0]?.dia
+          ? tarefas
+          : criarTarefas5S(escala.map(({ nome }) => nome))
     };
   } catch (error) {
     return null;
   }
 }
 
-function renderizarEscala(escala) {
+function renderizarEscala(escala, tarefasSemana) {
   const linhas = escala
     .map(({ nome, rotacao }) => {
       const colunas = rotacao.map((posto) => `<td>${escaparHTML(posto)}</td>`).join("");
       return `<tr><td>${escaparHTML(nome)}</td>${colunas}</tr>`;
+    })
+    .join("");
+
+  const tarefasPorDia = new Map(tarefasSemana.map(({ dia, tarefas }) => [dia, tarefas]));
+  const linhas5S = tarefas5S
+    .map((tarefa, tarefaIndex) => {
+      const colunas = dias
+        .map((dia) => {
+          const nome = tarefasPorDia.get(dia)?.[tarefaIndex]?.nome || "";
+          return `<td>${escaparHTML(nome)}</td>`;
+        })
+        .join("");
+
+      return `<tr><td>${escaparHTML(tarefa)}</td>${colunas}</tr>`;
     })
     .join("");
 
@@ -153,38 +175,17 @@ function renderizarEscala(escala) {
           <tbody>${linhas}</tbody>
         </table>
       </div>
-    </div>
-  `;
-}
 
-function renderizarTarefas5S(tarefas) {
-  const linhas = tarefas
-    .map(
-      ({ tarefa, nome }) => `
-        <tr>
-          <td>${escaparHTML(tarefa)}</td>
-          <td>${escaparHTML(nome)}</td>
-        </tr>
-      `
-    )
-    .join("");
-
-  document.getElementById("tarefasContainer").innerHTML = `
-    <div class="card tarefas-card">
-      <div class="card-header">
+      <div class="tarefas-semana">
         <h2>Organizacao 5S</h2>
-        <span>4 colaboradores por geracao</span>
-      </div>
-
-      <div class="tabela-wrapper">
         <table class="tarefas-table">
           <thead>
             <tr>
               <th>Tarefa</th>
-              <th>Colaborador</th>
+              ${dias.map((dia) => `<th>${dia}</th>`).join("")}
             </tr>
           </thead>
-          <tbody>${linhas}</tbody>
+          <tbody>${linhas5S}</tbody>
         </table>
       </div>
     </div>
@@ -201,15 +202,13 @@ function gerarNovaSemana() {
       </div>
     `;
     document.getElementById("fluxogramaContainer").innerHTML = "";
-    document.getElementById("tarefasContainer").innerHTML = "";
     return;
   }
 
   const escala = criarEscala(nomes);
   const tarefas = criarTarefas5S(nomes);
 
-  renderizarEscala(escala);
-  renderizarTarefas5S(tarefas);
+  renderizarEscala(escala, tarefas);
   gerarFluxograma();
   salvarEscala(escala, tarefas);
 }
@@ -269,8 +268,7 @@ function iniciarPainel() {
   const dadosSalvos = carregarDadosDaSemana();
 
   if (dadosSalvos) {
-    renderizarEscala(dadosSalvos.escala);
-    renderizarTarefas5S(dadosSalvos.tarefas);
+    renderizarEscala(dadosSalvos.escala, dadosSalvos.tarefas);
     gerarFluxograma();
     return;
   }

@@ -148,6 +148,14 @@ button:hover {
   align-items: start;
 }
 
+.tarefas-semana {
+  margin-top: 18px;
+}
+
+.tarefas-semana h2 {
+  margin-bottom: 10px;
+}
+
 .tabela-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -261,7 +269,7 @@ tbody tr:nth-child(even) {
 
 @page {
   size: A4 landscape;
-  margin: 4mm;
+  margin: 6mm;
 }
 
 @media print {
@@ -309,8 +317,7 @@ tbody tr:nth-child(even) {
   }
 
   .resultado-grid {
-    grid-template-columns: minmax(0, 1fr) 55mm;
-    gap: 4mm;
+    display: block;
   }
 
   .card {
@@ -344,49 +351,58 @@ tbody tr:nth-child(even) {
 
   th,
   td {
-    padding: 2px 3px;
-    font-size: 6.5px;
+    padding: 2.4px 3.2px;
+    font-size: 7px;
     line-height: 1.15;
   }
 
   td:first-child,
   th:first-child {
-    min-width: 22mm;
+    min-width: 24mm;
+  }
+
+  .tarefas-semana {
+    margin-top: 3mm;
+  }
+
+  .tarefas-semana h2 {
+    margin-bottom: 1.5mm;
   }
 
   .tarefas-table th,
   .tarefas-table td {
     font-size: 7px;
-    padding: 3px;
+    padding: 2.4px 3.2px;
+  }
+
+  #fluxogramaContainer {
+    margin-top: 7mm;
   }
 
   .fluxograma {
-    align-items: stretch;
-    gap: 1.8mm;
+    align-items: center;
+    gap: 1.5mm;
     margin-top: 0;
     padding-bottom: 0;
   }
 
   .linha {
-    justify-content: space-between;
-    gap: 0.8mm;
-    min-width: 0;
-    width: 100%;
+    gap: 1mm;
+    min-width: max-content;
   }
 
   .caixa {
-    width: 22mm;
-    min-height: 8.5mm;
+    width: 20mm;
+    min-height: 8mm;
     padding: 1.1mm;
     border-width: 1px;
     border-radius: 3px;
-    font-size: 6.6px;
+    font-size: 6.3px;
     line-height: 1.1;
   }
 
   .seta,
   .vertical {
     font-size: 8px;
-    flex: 0 0 auto;
   }
 }
