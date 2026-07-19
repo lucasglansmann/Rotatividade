@@ -261,7 +261,7 @@ tbody tr:nth-child(even) {
 
 @page {
   size: A4 landscape;
-  margin: 6mm;
+  margin: 4mm;
 }
 
 @media print {
@@ -361,27 +361,32 @@ tbody tr:nth-child(even) {
   }
 
   .fluxograma {
-    gap: 1.5mm;
+    align-items: stretch;
+    gap: 1.8mm;
     margin-top: 0;
     padding-bottom: 0;
   }
 
   .linha {
-    gap: 1mm;
+    justify-content: space-between;
+    gap: 0.8mm;
+    min-width: 0;
+    width: 100%;
   }
 
   .caixa {
-    width: 19mm;
-    min-height: 7mm;
-    padding: 1mm;
+    width: 22mm;
+    min-height: 8.5mm;
+    padding: 1.1mm;
     border-width: 1px;
     border-radius: 3px;
-    font-size: 5.6px;
+    font-size: 6.6px;
     line-height: 1.1;
   }
 
   .seta,
   .vertical {
     font-size: 8px;
+    flex: 0 0 auto;
   }
 }
