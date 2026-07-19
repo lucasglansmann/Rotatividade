@@ -275,7 +275,7 @@ async function exportarPDF() {
   exportArea.className = "pdf-export";
   exportArea.innerHTML = `
     <header class="pdf-cabecalho">
-      <img src="assets/mbb.jpg" alt="Mercedes-Benz">
+      <img src="mbb.jpg" alt="Mercedes-Benz">
       <div>
         <h1>Painel Inteligente de Rotatividade</h1>
         <p>${escaparHTML(document.getElementById("semanaAtual").textContent)}</p>
@@ -289,7 +289,6 @@ async function exportarPDF() {
   `;
 
   document.body.appendChild(exportArea);
-  document.body.classList.add("gerando-pdf");
 
   await aguardarImagens(exportArea);
 
@@ -313,7 +312,6 @@ async function exportarPDF() {
       .save();
   } finally {
     exportArea.remove();
-    document.body.classList.remove("gerando-pdf");
   }
 }
 

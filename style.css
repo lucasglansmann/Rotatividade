@@ -241,15 +241,6 @@ tbody tr:nth-child(even) {
   z-index: 9999;
 }
 
-body.gerando-pdf {
-  background: var(--branco);
-  padding: 0;
-}
-
-body.gerando-pdf > :not(.pdf-export) {
-  display: none !important;
-}
-
 .pdf-export .pdf-cabecalho {
   height: 0.48in;
   display: flex;
