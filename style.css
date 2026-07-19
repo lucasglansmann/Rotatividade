@@ -284,9 +284,9 @@ tbody tr:nth-child(even) {
   }
 
   .topo {
-    min-height: 42px;
-    padding: 5px 8px;
-    margin-bottom: 5px;
+    min-height: 46px;
+    padding: 6px 9px;
+    margin-bottom: 7px;
     border-radius: 4px;
     box-shadow: none;
   }
@@ -303,12 +303,12 @@ tbody tr:nth-child(even) {
   }
 
   h1 {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .topo p,
   .data-atual {
-    font-size: 8px;
+    font-size: 8.5px;
   }
 
   .painel,
@@ -324,20 +324,20 @@ tbody tr:nth-child(even) {
     border: none;
     border-radius: 0;
     padding: 0;
-    margin-bottom: 3mm;
+    margin-bottom: 4mm;
     break-inside: avoid;
   }
 
   .card-header {
-    margin-bottom: 2mm;
+    margin-bottom: 2.5mm;
   }
 
   h2 {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .card-header span {
-    font-size: 7px;
+    font-size: 7.5px;
   }
 
   .tabela-wrapper,
@@ -351,9 +351,9 @@ tbody tr:nth-child(even) {
 
   th,
   td {
-    padding: 2.4px 3.2px;
-    font-size: 7px;
-    line-height: 1.15;
+    padding: 3.1px 3.8px;
+    font-size: 7.7px;
+    line-height: 1.2;
   }
 
   td:first-child,
@@ -362,47 +362,47 @@ tbody tr:nth-child(even) {
   }
 
   .tarefas-semana {
-    margin-top: 3mm;
+    margin-top: 4mm;
   }
 
   .tarefas-semana h2 {
-    margin-bottom: 1.5mm;
+    margin-bottom: 2mm;
   }
 
   .tarefas-table th,
   .tarefas-table td {
-    font-size: 7px;
-    padding: 2.4px 3.2px;
+    font-size: 7.7px;
+    padding: 3.1px 3.8px;
   }
 
   #fluxogramaContainer {
-    margin-top: 7mm;
+    margin-top: 13mm;
   }
 
   .fluxograma {
     align-items: center;
-    gap: 1.5mm;
+    gap: 2.2mm;
     margin-top: 0;
     padding-bottom: 0;
   }
 
   .linha {
-    gap: 1mm;
+    gap: 1.3mm;
     min-width: max-content;
   }
 
   .caixa {
-    width: 20mm;
-    min-height: 8mm;
-    padding: 1.1mm;
+    width: 21mm;
+    min-height: 9.3mm;
+    padding: 1.3mm;
     border-width: 1px;
     border-radius: 3px;
-    font-size: 6.3px;
-    line-height: 1.1;
+    font-size: 7px;
+    line-height: 1.12;
   }
 
   .seta,
   .vertical {
-    font-size: 8px;
+    font-size: 9px;
   }
 }
