@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Painel Inteligente de Rotatividade 1.0</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+  <header class="topo">
+    <div class="logo-area">
+      <img src="assets/mbb.jpg" alt="Mercedes-Benz" class="logo">
+      <div>
+        <h1>Painel Inteligente de Rotatividade</h1>
+        <p>Postos de trabalho e Organizacao 5S</p>
+      </div>
+    </div>
+
+    <div id="semanaAtual" class="data-atual"></div>
+  </header>
+
+  <main id="printArea">
+    <section class="painel">
+      <div class="card-header">
+        <h2>Colaboradores</h2>
+        <span>Um nome por linha</span>
+      </div>
+
+      <textarea id="nomes" aria-label="Lista de colaboradores">Laura
+Jocemar
+Vanderson
+Jonathan
+Davi
+Paulo Vitor
+Rodrigo
+Braulio
+Luiz Felipe
+Henrrique
+Lucas
+Arthur
+Lauro
+Pablo
+Joao Marcos
+Amauri
+Rafael</textarea>
+
+      <div class="botoes">
+        <button type="button" onclick="gerarNovaSemana()">Gerar Rotatividade</button>
+        <button type="button" onclick="exportarPDF()">Exportar PDF</button>
+      </div>
+    </section>
+
+    <section class="resultado-grid">
+      <div id="escalaContainer"></div>
+      <div id="tarefasContainer"></div>
+    </section>
+    <section id="fluxogramaContainer"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
